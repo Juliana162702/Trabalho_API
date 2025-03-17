@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Compras</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lista de Compras</h1>
+  <ul id="lista-compras"></ul>
+
+  <script>
+    // Função para buscar a lista de compras da API
+    async function fetchListaCompras() {
+      try {
+        const response = await fetch('http://localhost:3000/api/compras');
+        const data = await response.json();
+        const lista = document.getElementById('lista-compras');
+
+        // Exibe os itens na página
+        data.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = `${item.item}: ${item.quantidade} unidade(s)`;
+          lista.appendChild(li);
+        });
+      } catch (error) {
+        console.error('Erro ao buscar lista de compras:', error);
+      }
+    }
+
+    // Chama a função ao carregar a página
+    fetchListaCompras();
+  </script>
+</body>
+</html>
