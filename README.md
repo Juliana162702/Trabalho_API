@@ -69,5 +69,3 @@ Backend: Node.js, Express
 
 Middleware: CORS
 
-## 📄 Licença
-Este projeto está sob a licença MIT - veja o arquivo LICENSE para detalhes.
